@@ -1,40 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './MainScreen.scss'
 import { TaskInput } from '../../components/TaskInput/TaskInput'
 import { TasksBox } from '../../components/TasksBox/TasksBox'
+import { useSelector, useDispatch } from "react-redux";
+import { filterTasks, deleteCompletedTasks } from '../../store/reducers/toDo';
 
 export const MainScreen = () => {
-    const [taskList, setTaskList] = useState([]);
-    const [tasks, setTasks] = useState([]);
+    const taskList = useSelector((state) => state.tasks.taskList);
 
-    useEffect(() => {
-        setTasks(taskList);
-    }, [taskList]);
+    const dispatch = useDispatch();
 
+    const deleteAllCompleted = () => {
+        dispatch(deleteCompletedTasks())
+    }
 
-    const filterTasks = (e, filterValue) => {
-        console.log(tasks)
-        if (filterValue === 'active') {
-            setTasks(taskList.filter(task => !task.checked));
-            return;
-        }
-        if (filterValue === 'completed') {
-            setTasks(taskList.filter(task => task.checked));
-            return;
-        }
-        setTasks(taskList);
-
+    const handleFilterTasks = (filterValue) => {
+        dispatch(filterTasks(filterValue));
     }
 
     return (
         <div>TO DO LIST
-            <TaskInput taskList={taskList} addTask={setTaskList} />
-            <TasksBox taskList={taskList} editTaskList={setTaskList} tasks={tasks} editTask={setTaskList} />
+            <TaskInput />
+            <TasksBox />
             <div>
-                <spam>{taskList.filter(task => !task.checked).length} items left</spam>
-                <button onClick={(e) => filterTasks(e, '')}>all </button>
-                <button onClick={(e) => filterTasks(e, 'active')}>active </button>
-                <button onClick={(e) => filterTasks(e, 'completed')} >completed </button>
+                <spam>{taskList.filter(task => !task.completed).length} items left</spam>
+                <button onClick={() => handleFilterTasks('')}>all </button>
+                <button onClick={() => handleFilterTasks('active')}>active </button>
+                <button onClick={() => handleFilterTasks('completed')} >completed </button>
+                <button onClick={() => deleteAllCompleted()} >delete completed </button>
             </div>
         </div>
     )

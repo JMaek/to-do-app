@@ -1,27 +1,30 @@
 import React from 'react'
 import './TasksBox.scss'
+import { useSelector, useDispatch } from "react-redux";
+import { toggleComplete, deleteTask } from '../../store/reducers/toDo'
 
-export const TasksBox = ({ taskList, editTaskList, tasks, editTask }) => {
+export const TasksBox = () => {
+    const tasksListState = useSelector((state) => state.tasks.taskList);
+    const isFiltered = useSelector((state) => state.tasks.isFiltered);
+    const filteredTasks = useSelector((state) => state.tasks.filteredTasks);
 
-    const deleteTask = (e, task) => {
-        console.log('henlo')
-        editTask(taskList.filter(item => item.task !== task.task))
+    const tasksList = isFiltered ? filteredTasks : tasksListState;
+    const dispatch = useDispatch();
+
+    const removeTask = (task) => {
+        dispatch(deleteTask(task.id));
     }
 
-    const completeTask = (e, task) => {
-        console.log('check')
-        const temporaryTaks = [...taskList];
-        const changedTaskIndex = temporaryTaks.findIndex(changedTask => changedTask.id === task.id);
-        temporaryTaks[changedTaskIndex].checked = !temporaryTaks[changedTaskIndex].checked;
-        editTaskList(temporaryTaks);
+    const completeTask = (task) => {
+        dispatch(toggleComplete(task.id));
     }
 
     return (
         <>
-            {tasks.map((task) => <div key={task.id}>
-                <input type="checkbox" checked={task.checked} value={task.task} onChange={(e) => completeTask(e, task)} />
+            {tasksList.map((task) => <div key={task.id}>
+                <input type="checkbox" checked={task.completed} value={task.task} onChange={() => completeTask(task)} />
                 <label>{task.task}</label>
-                <button onClick={(e) => deleteTask(e, task)}>x</button>
+                <button onClick={() => removeTask(task)}>x</button>
             </div>
             )}
         </>
