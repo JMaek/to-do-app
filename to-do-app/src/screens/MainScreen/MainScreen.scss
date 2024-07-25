@@ -1,0 +1,53 @@
+.MainScreen {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 3vw 0;
+    background-image: url('../../assets/images/bg-desktop-light.jpg');
+    background-repeat: no-repeat;
+    font-size: 18px;
+    font-weight: 400;
+
+    &__Header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__Container {
+        display: flex;
+        flex-direction: column;
+        width: 35vw;
+
+    }
+
+    &__Title {
+        color: var(--very-light-grayish-blue);
+        letter-spacing: 1rem;
+        font-weight: 700;
+        font-size: 48px;
+    }
+
+    &__ToDo {
+        background: var(--very-light-gray);
+        border-radius: 5px;
+        box-shadow: 0px 20px 30px -10px var(--shadow);
+
+    }
+
+    &__TodoFooter {
+        height: 2.75em;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 14px;
+        color: var(--dark-grayish-blue);
+    }
+
+    &__FilterButtons {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,69 @@
+.TasksBox {
+    height: 3.75em;
+    border-bottom: solid var(--very-light-grayish-blue) 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+    color: var(--very-dark-grayish-blue);
+
+    &:hover &__RemoveButton {
+        opacity: 1;
+    }
+
+    &__TodoContainer {
+        display: flex;
+        align-items: center;
+    }
+
+    &__RemoveButton {
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    &__Checkbox {
+        margin: 0 1.75em 0 0;
+        cursor: pointer;
+        width: 1.9em;
+        height: 1.9em;
+        border-radius: 50%;
+        appearance: none;
+        -webkit-appearance: none;
+        border: 1px solid transparent;
+        background:
+            linear-gradient(to right, white, white),
+            var(--very-light-grayish-blue);
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+
+        &:hover:not(.checked) {
+            background: linear-gradient(to right, white, white),
+                var(--check-background);
+            background-clip: padding-box, border-box;
+            background-origin: padding-box, border-box;
+        }
+    }
+
+    &__Label {
+        font-size: 18px;
+        font-weight: 400;
+        cursor: pointer;
+    }
+}
+
+.checked {
+    background: url('../../assets/images/icon-check.svg'),
+        var(--check-background);
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    border: none;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: var(--light-grayish-blue);
+}

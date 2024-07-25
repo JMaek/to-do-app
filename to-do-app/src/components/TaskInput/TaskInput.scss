@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+.TaskInput {
+    width: 100%;
+    position: relative;
+
+    &__Input {
+        width: 100%;
+        height: 3.75em;
+        margin: 2% 0 7% 0;
+        border: none;
+        padding-left: 4em;
+        box-sizing: border-box;
+        font-size: 18px;
+        font-weight: 400;
+        border-radius: 5px;
+        font-family: 'Josefin Sans', sans-serif;
+        background-color: var(--very-light-gray);
+
+        &::placeholder {
+            color: var(--dark-grayish-blue);
+            opacity: 1;
+        }
+    }
+
+    &__Input-checkbox {
+        position: absolute;
+        width: 1.9em;
+        height: 1.9em;
+        border-radius: 50%;
+        border: 1px solid var(--very-light-grayish-blue);
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        left: 1.5em;
+        top: 2em;
+    }
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
