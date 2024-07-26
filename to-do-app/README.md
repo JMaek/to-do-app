@@ -32,5 +32,5 @@ Navigate to project directory
 Install all dependencies
 
 ```bash
-npm npm run start
+npm run start
 ```
