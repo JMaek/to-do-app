@@ -18,14 +18,14 @@ export const TaskInput = () => {
 
     return (
         <div className='TaskInput'>
+            <input type="checkbox" className='TaskInput__Input-checkbox' disabled />
             <input
                 className='TaskInput__Input'
                 name="task"
-                placeholder='Create a new todo...'
+                placeholder={'Create a new todo...'}
                 value={inputValue}
                 onKeyDown={handleKeyDown}
                 onChange={(e) => setInputValue(e.target.value)} />
-            <input type="checkbox" className='TaskInput__Input-checkbox' disabled />
         </div>
     )
 }

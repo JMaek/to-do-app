@@ -67,3 +67,28 @@
     text-decoration: line-through;
     color: var(--light-grayish-blue);
 }
+
+@media screen and (max-width: 820px) {
+
+    .TasksBox {
+
+        &__TodoContainer {
+            display: flex;
+            align-items: center;
+        }
+
+        &__RemoveButton {
+            opacity: 1;
+            transition: none;
+        }
+
+        &__Checkbox {
+            width: 1.7em;
+            height: 1.7em;
+        }
+
+        &__Label {
+            font-size: 16px;
+        }
+    }
+}

@@ -33,7 +33,7 @@ export const MainScreen = () => {
                 <div className='MainScreen__ToDo'>
                     <TasksBox />
                     <div className='MainScreen__TodoFooter'>
-                        <spam>{taskList.filter(task => !task.completed).length} items left</spam>
+                        <spam className='MainScreen__ItemCounter'>{taskList.filter(task => !task.completed).length} items left</spam>
                         <div className='MainScreen__FilterButtons'>
                             <TextButton isActive={activeButton === 1 && activeButton} text={"All"} handleClick={() => handleFilterTasks('', 1)} />
                             <TextButton isActive={activeButton === 2 && activeButton} text={"Active"} handleClick={() => handleFilterTasks('active', 2)} />
