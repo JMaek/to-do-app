@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let id = 0;
+let id = 1;
 const todoSlice = createSlice({
     name: "tasks",
     initialState: {
@@ -44,8 +44,12 @@ const todoSlice = createSlice({
             if (action.payload === '') {
                 return { ...state, filteredTasks: [], isFiltered: false }
             }
+        },
+
+        changeOrder: (state, action) => {
+            state.taskList = action.payload;
         }
     },
 });
-export const { addTask, toggleComplete, deleteTask, filterTasks, deleteCompletedTasks } = todoSlice.actions;
+export const { addTask, toggleComplete, deleteTask, filterTasks, deleteCompletedTasks, changeOrder } = todoSlice.actions;
 export default todoSlice.reducer;

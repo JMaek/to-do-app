@@ -10,6 +10,7 @@ A Simple TODO App
 - Clear all completed todos
 - Responsive design
 - Light/Dark Theme by clicking sun/moon icon
+- Drag and Drop to change order of the tasks
 
 ## Dependencies
 
@@ -22,7 +23,6 @@ To install all dependencies
 ```bash
 npm install
 ```
-
 
 ## Usage
 

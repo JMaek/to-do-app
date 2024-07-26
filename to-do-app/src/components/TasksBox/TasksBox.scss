@@ -4,16 +4,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1em;
     color: var(--very-dark-grayish-blue);
 
     &:hover &__RemoveButton {
         opacity: 1;
     }
 
+    &__Dragable {
+        width: 100%;
+        height: 3.75em;
+        border-bottom: solid var(--very-light-grayish-blue) 1px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--very-dark-grayish-blue);
+        padding: 0 1.5em;
+    }
+
     &__TodoContainer {
         display: flex;
         align-items: center;
+        touch-action: none;
     }
 
     &__RemoveButton {

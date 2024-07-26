@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './TasksBox.scss'
 import { useSelector, useDispatch } from "react-redux";
-import { toggleComplete, deleteTask } from '../../store/reducers/toDo'
-import { ReactComponent as IconCross } from '../../assets/images/icon-cross.svg';
-
+import { changeOrder } from '../../store/reducers/toDo'
+import { SortableList } from './SortableList';
 
 export const TasksBox = () => {
     const tasksListState = useSelector((state) => state.tasks.taskList);
@@ -13,25 +12,23 @@ export const TasksBox = () => {
     const tasksList = isFiltered ? filteredTasks : tasksListState;
     const dispatch = useDispatch();
 
-    const removeTask = (task) => {
-        dispatch(deleteTask(task.id));
-    }
 
-    const completeTask = (task) => {
-        dispatch(toggleComplete(task.id));
+    const changeOrderList = (list) => {
+        dispatch(changeOrder(list));
     }
 
     return (
         <>
-            {tasksList.map((task) => <div className='TasksBox' key={task.id}>
-                <div className='TasksBox__TodoContainer'>
-                    <input className={`TasksBox__Checkbox ${task.completed && 'checked'}`} type="checkbox" checked={task.completed} value={task.task} onChange={() => completeTask(task)} />
-                    <label className={`TasksBox__Label ${task.completed && 'completed'}`}>{task.task}</label>
-                </div>
-
-                <IconCross className='TasksBox__RemoveButton' onClick={() => removeTask(task)} />
+            <div >
+                <SortableList
+                    tasks={tasksList}
+                    onChange={changeOrderList}
+                    renderItem={(item) => (
+                        <SortableList.Item id={item.id} task={item} />
+                    )}
+                />
             </div>
-            )}
+
         </>
     )
 }
